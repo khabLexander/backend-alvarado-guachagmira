@@ -14,35 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-// Route::get('projects', function(){
-//     return "Hola mundo";
-// }); 
-
-Route::get('projects',function (){
-   return ['proyecto1','proyecto2'];
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
-
-Route::get('projects/{project}',function (){
-   return 'proyecto1';
-});
-
-Route::post('projects',function (){
-   return "Creado";
-});
-
-Route::put('projects/{project}',function (){
-   return "Actualizado";
-});
-
-Route::delete('projects/{project}',function (){
-   return "Eliminado";
-});
-
-Route::post('episodes',function (){
-   return "Creado";
-});
-

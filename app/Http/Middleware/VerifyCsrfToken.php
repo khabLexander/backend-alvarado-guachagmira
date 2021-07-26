@@ -12,8 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'http://backend-alvarado-guachagmira.test/episodes',
-        'http://backend-alvarado-guachagmira.test/episodes/30/characters',
-        'http://backend-alvarado-guachagmira.test/episodes/30/characters/roberto+cali'
+        // 'http://backend-alvarado-guachagmira.test/episodes',
+        // 'http://backend-alvarado-guachagmira.test/episodes/{30}/characters',
+        // 'http://backend-alvarado-guachagmira.test/episodes/30/characters/roberto+cali'
+        'http://backend-alvarado-guachagmira.test/*'
     ];
 }
