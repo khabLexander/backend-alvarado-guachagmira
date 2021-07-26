@@ -13,10 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+//Tarea crear rutas dependientes
+
+Route::get('characters/{character}/occupations/{occupation}',function (){
+    return 'Meth King Pin';
+ });
+
+Route::get('characters/{character}/occupations',function (){
+    return ['High School Chemistry Teacher','Meth King Pin'];
+ });
+  
+Route::post('episodes',function (){
+    return "Creado";
 });
 
-Route::get('/pagina-kevin', function () {
-    return view('guachagmira');
+Route::put('episodes/{episode}/characters',function (){
+    return "Updated characters";
 });
+
+Route::delete('episodes/{episode}/characters/{character}',function (){
+    return "Deleted character";
+});
+ 

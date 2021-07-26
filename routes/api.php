@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+// Route::get('projects', function(){
+//     return "Hola mundo";
+// });
+
 Route::get('wineries', function () {
     return ['Bodega1', 'bodega2'];
 });
@@ -56,5 +61,4 @@ Route::put('wineries/{id}/products/{code}', function () {
 Route::delete('wineries/{id}/products/{code}', function () {
     return "Producto Eliminado";
 });
-
 
