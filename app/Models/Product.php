@@ -2,25 +2,25 @@
 
 namespace App\Models;
 
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-  protected $table = 'products';
+  use HasFactory;
+  protected $table = 'app.products';
   protected $attributes = [
     'code',
     'description',
     'price',
     'business',
-    'is_actived',
+    'actived',
     'date'
   ];
   protected $cast = [
-    'is_actived' => 'boolena',
+    'actived' => 'boolena',
     'date'=> 'datetime:y-m-d'
-
-  ]
+  ];
 
 
     //uno a uno
@@ -30,7 +30,7 @@ class Product extends Model
 
     //uno a varios
     function winery(){
-        return $this->belongsTo(Winery::class)
+        return $this->belongsTo(Winery::class);
     }
 
     //vario a varios

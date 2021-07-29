@@ -7,17 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Winery extends Model
 {
-  protected $table = 'wineries';
+  use HasFactory;
+  protected $table = 'app.wineries';
   protected $attributes = [
+    'winery_id',
     'name',
     'code',
     'color',
-    'business',
     'description',
     'status'
   ];
 
-  protected $attributes= ['full_name']
+  // protected $attributes= ['full_name'];
 
   //uno a uno
   // function product(){
@@ -26,7 +27,7 @@ class Winery extends Model
 
   //uno a varios
   function products(){
-    return $this.->hasMany(Product::class)
+    return $this->hasMany(Product::class);
   }
 
   //vario a varios
@@ -35,12 +36,12 @@ class Winery extends Model
   // }
 
   //Mutators
-  function setCodeAttribute($value){
-    $this->attributes['code'] = $value+
-  }
+  // function setCodeAttribute($value){
+  //   $this->attributes['code'] = $value+
+  // }
 
   //Accessors
-  function setFullNameAttribute() {
-    return $this->attribute['code'].$this->attributes.['description']
-  }
+  // function setFullNameAttribute() {
+  //   return $this->attribute['code'].$this->attributes.['description']
+  // }
 }

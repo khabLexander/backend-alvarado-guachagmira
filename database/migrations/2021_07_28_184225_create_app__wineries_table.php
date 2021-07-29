@@ -15,6 +15,11 @@ class CreateAppWineriesTable extends Migration
     {
         Schema::connection(env('DB_CONNECTION_APP'))->create('wineries', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('code')->comment('codigo de la bodega');
+            $table->string('color');
+            $table->string('description');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

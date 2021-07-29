@@ -18,20 +18,15 @@ class CreateAppProductsTable extends Migration
             $table->foreignId('winery_id')->constrained('app.wineries');
             $table->string('code')->comment('Codigo del producto');
             $table->text('description')->comment('Descripcion del producto');
-            $table->integer('price')->comment('Precio del producto');
+            $table->string('price')->comment('Precio del producto');
             $table->string('business')->comment('Id de la empresa a la que pertenece');
-            $table->boolean('is_actived')->comment('Estado del producto')->default(true);
+            $table->boolean('actived')->comment('Estado del producto')->default(true);
             $table->date('date')->comment('Fecha prueba');
-            // $table->sofDeletes();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('products');
