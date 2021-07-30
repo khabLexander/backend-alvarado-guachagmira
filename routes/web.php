@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsController;
-
+use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\CharactersController;
+use App\Http\Controllers\EpisodesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,25 +20,77 @@ use App\Http\Controllers\ProjectsController;
 //Tarea crear rutas dependientes
 
 // Route::get('characters/{character}/occupations/{occupation}',function (){
-//     return 'Meth King Pin';
+//    $occupation = 'Meth King Pin';
+//    return response()->json(
+//       [
+//          'data' => $occupation, 
+//          'msg'=>[
+//                'summary'=>'consulta correcta', 
+//                'detail'=>' la consulta de ocupación esta correcta',
+//                'code'=>'200'
+//                ]
+//       ], 200
+//    );
 //  });
 
 // Route::get('characters/{character}/occupations',function (){
-//     return ['High School Chemistry Teacher','Meth King Pin'];
+//    $occupations = ['High School Chemistry Teacher','Meth King Pin'];
+//    return response()->json(
+//       [
+//          'data' => $occupations, 
+//          'msg'=>[
+//                'summary'=>'Consulta correcta', 
+//                'detail'=>' La consulta de ocupaciones esta correcta',
+//                'code'=>'200'
+//                ]
+//       ], 200
+//    );
 //  });
-  
+
 // Route::post('episodes/{episode}/characters',function (){
-//     return "Created characters";
+//    $character = 'Luu Muu';
+//    return response()->json(
+//       [
+//          'data' => $character, 
+//          'msg'=>[
+//                'summary'=>'Creado correctamente', 
+//                'detail'=>' El personaje se creo correctamente',
+//                'code'=>'201'
+//                ]
+//       ], 201
+//    );
 // });
 
 // Route::put('episodes/{episode}/characters/{character}',function (){
-//     return "Updated characters";
+//    return response()->json(
+//       [
+//          'data' => null, 
+//          'msg'=>[
+//                'summary'=>'Actualizado correctamente', 
+//                'detail'=>' El personaje se actualizo correctamente',
+//                'code'=>'201'
+//                ]
+//       ], 201
+//    );
 // });
 
 // Route::delete('episodes/{episode}/characters/{character}',function (){
-//     return "Deleted character";
+//    $character = 'Luu Moo';
+//    return response()->json(
+//       [
+//          'data' => $character, 
+//          'msg'=>[
+//                'summary'=>'Eliminado correctamente', 
+//                'detail'=>' El personaje se elimino correctamente',
+//                'code'=>'201'
+//                ]
+//       ], 201
+//    );
 // });
- 
+
+
+//Projects
+
 // Route::get('projects',function (){
 //    $projects = ['project1','project2','project3'];
 //    return response()->json(
@@ -105,17 +159,3 @@ use App\Http\Controllers\ProjectsController;
 //       ], 201
 //    );
 // });
-
-
-
-Route :: apiResource('projects', ProjectsController::class);
-
-
-Route::prefix('project')->group(function () {
-    Route::prefix('{project}')->group(function () {
-        Route::patch('state',[ProjectsController::class,'updateState']);
-    });
-    Route::prefix('')->group(function () {
-        Route::patch('state',[ProjectsController::class,'updateState']);
-    });
-});
