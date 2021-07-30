@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Winery;
 
 class WineriesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $wineries = ['Bodega1', 'bodega2'];
+        // $wineries = DB::select('select * from app.wineries');
+        // $wineries = DB::table('app.wineries')->get();
+
+        $wineries = Winery::get();
         return response()->json(
             [
             'data' => $wineries,
@@ -26,15 +26,40 @@ class WineriesController extends Controller
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $wineries='bodega1';
+        // $wineries = DB::insert('insert into app.wineries(id, name, code, color, description, status)
+        // values(?,?,?,?,?,?)', [
+        //     $request->id,
+        //     $request->name,
+        //     $request->code,
+        //     $request->color,
+        //     $request->description,
+        //     $request->status
+        // ]);
+        // $wineries = DB::table('app.wineries')->insert([
+        //     'id' => $request->id,
+        //     'name' => $request->name,
+        //     'code' => $request->code,
+        //     'color' => $request->color,
+        //     'description' => $request->description,
+        //     'status' => $request->status
+        // ]);
+
+        // $wineries = Winery::create([
+
+        // ]);
+
+        $wineries = new Winery();
+        $wineries->id = $request->id;
+        $wineries->name = $request->name;
+        $wineries->code= $request->code;
+        $wineries->color = $request->color;
+        $wineries->description = $request->description;
+        $wineries->status= $request->status;
+        $wineries->save();
+
+
         return response()->json(
             [
             'data' => $wineries,
@@ -47,18 +72,21 @@ class WineriesController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Winery $winery)
+
     {
-        $wineries='bodega1';
+        //SQL
+        // $winery = DB::select('select * from app.wineries where id=?',[$winery]);
+        
+        //QUERY BUILDER
+        // $winery = DB::table('app.wineries')->where('id', '=', $winery)->first();
+        // $project = DB::table('app.wineries')->find($winery);
+        
+        //ELOQUENT
+        // $wineries = Winery::find($winery);
         return response()->json(
         [
-            'data' => $wineries,
+            'data' => $winery,
             'msg' => [
             'summary' => 'consulta correcta',
             'detail' => 'la consulta se realizo correctamente',
@@ -68,15 +96,18 @@ class WineriesController extends Controller
         );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $winery)
     {
+        $wineries = Winery::find($winery);
+
+        // $wineries->id = $request->id;
+        $wineries->name = $request->name;
+        $wineries->code= $request->code;
+        $wineries->color = $request->color;
+        $wineries->description = $request->description;
+        $wineries->status= $request->status;
+        $wineries->save();
+
         return response()->json(
         [
             'data' => null,
@@ -89,17 +120,12 @@ class WineriesController extends Controller
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Winery $winery)
     {
-        $wineries = 'Bodega1';
+        // $wineries = Winery::find($winery);
+        // $wineries->delete();
         return response()->json(
-            ['data' => $wineries,
+            ['data' => $winery,
             'msg' => [
             'summary' => 'consulta correcta',
             'detail' => 'Se elimino correctamente ',
