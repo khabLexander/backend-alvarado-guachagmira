@@ -15,6 +15,8 @@ class CreateAppProductsTable extends Migration
     {
         Schema::connection(env('DB_CONNECTION_APP'))->create('products', function (Blueprint $table) {
             $table->id();
+            // $table->unsignedBigInteger('winery_id');
+            // $table->foreign('winery_id')->references('id')->on('wineries');
             $table->foreignId('winery_id')->constrained('app.wineries');
             $table->string('code')->comment('Codigo del producto');
             $table->text('description')->comment('Descripcion del producto');

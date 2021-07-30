@@ -22,11 +22,10 @@ class WineryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
+            'name' => $this->faker->sentence(3),
             'code' => $this->faker->lexify(),
-            'color' => $this->faker->word(),
-            'business' => $this->faker->word(),
-            'description' => $this->faker->word(),
+            'color' => $this->faker->sentence(3),
+            'description' => $this->faker->sentence(3),
             'status' => $this->faker->randomElement([true, false]),
         ];
     }

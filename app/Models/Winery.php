@@ -9,13 +9,12 @@ class Winery extends Model
 {
   use HasFactory;
   protected $table = 'app.wineries';
-  protected $attributes = [
-    'winery_id',
+  protected $fillable = [
     'name',
     'code',
     'color',
     'description',
-    'status'
+    'status',
   ];
 
   // protected $attributes= ['full_name'];

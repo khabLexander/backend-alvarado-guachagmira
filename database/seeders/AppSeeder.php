@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Winery;
 use App\Models\Produtc;
+use App\Models\Winery;
+use Illuminate\Database\Seeder;
 
 class AppSeeder extends Seeder
 {
@@ -14,12 +14,20 @@ class AppSeeder extends Seeder
     }
 
     function createData () {
-        $wineries = Winery::factory(10)->create();
-        foreach($wineries as $winery) {
-            Product::factory()
-            ->count(3)
-            ->for($winery)
-            ->create();
-        }
+        // $wineries = Winery::factory(10)->create();
+        // foreach($wineries as $winery) {
+        //     Product::factory()
+        //     ->count(3)
+        //     ->for($winery)
+        //     ->create();
+        // }
+        
+        // Winery::factory(10)
+        // ->has(Product::factory()->count(3), 'products')
+        // ->create();
+
+        Winery::factory(10)
+        ->hasProducts(3)
+        ->create();
     }
 }
