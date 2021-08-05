@@ -46,6 +46,9 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     protected function mapApiRoutes() {
+        Route::get('', function () {
+            return 'Backend with laravel , 2021';
+        });
         $version= 'v1';
         Route::prefix('api/'. $version.'/public')
         ->middleware('api')

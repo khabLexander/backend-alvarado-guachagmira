@@ -138,6 +138,11 @@ class WineriesController extends Controller
     public function updateState()
     {
         $wineries = 'Bodega1';
+
+        // $wineries = Winery::find($winery);
+        // $wineries->status= $request->status;
+        // $wineries->save();
+
         return response()->json(
         [
             'data' => $wineries,

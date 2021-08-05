@@ -14,9 +14,10 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Winery $winery)
     {
-        $products = Product::get();
+        $products = $winery->products()->where('winery_id', $winery->id)->get();
+        // $products = Product::get();
         return response()->json(
             [
             'data' => $products,
@@ -66,6 +67,7 @@ class ProductsController extends Controller
      */
     public function show($product)
     {
+        // $products = $winery->products()->where('winery_id', $winery->id)->get();
         $product = Product::find($product);
         return response()->json(
         [
@@ -79,16 +81,10 @@ class ProductsController extends Controller
         );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $product)
     {
         $products = Product::find($product);
+        // $products = $winery->products()->where('winery_id', $winery->id)->get();
 
         // $products->id = $request->id;
         $products->code= $request->code;
@@ -117,10 +113,12 @@ class ProductsController extends Controller
      * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($product)
+    public function destroy(Winery $winery, $product)
     {
-        $product = Product::find($product);
-        $product->delete();
+        $product = $winery->products()->where('winery_id', $winery->id)->delete();
+
+        // $product = Product::find($product);
+        // $product->delete();
         return response()->json(
             ['data' => $product,
             'msg' => [

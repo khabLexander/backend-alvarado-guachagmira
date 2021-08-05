@@ -20,7 +20,7 @@ class CreateAppProductsTable extends Migration
             $table->foreignId('winery_id')->constrained('app.wineries');
             $table->string('code')->comment('Codigo del producto');
             $table->text('description')->comment('Descripcion del producto');
-            $table->string('price')->comment('Precio del producto');
+            $table->double('price')->comment('Precio del producto');
             $table->string('business')->comment('Id de la empresa a la que pertenece');
             $table->boolean('actived')->comment('Estado del producto')->default(true);
             $table->date('date')->comment('Fecha prueba');

@@ -24,9 +24,9 @@ use App\Http\Controllers\ProductsController;
 Route::apiResource('wineries',WineriesController::class);
 Route::apiResource('wineries.products',ProductsController::class);
 
-Route::prefix('winerie')->group(function () {
-    Route::prefix('{winerie}')->group(function () {
-        Route::get('products',[WineriesController::class, 'updateState']);
+Route::prefix('winery')->group(function () {
+    Route::prefix('{winery}')->group(function () {
+        Route::patch('states',[WineriesController::class, 'updateState']);
     });
 });
 

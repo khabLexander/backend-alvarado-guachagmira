@@ -24,7 +24,7 @@ class WineryFactory extends Factory
         return [
             'name' => $this->faker->sentence(3),
             'code' => $this->faker->lexify(),
-            'color' => $this->faker->sentence(3),
+            'color' => $this->faker->word(),
             'description' => $this->faker->sentence(3),
             'status' => $this->faker->randomElement([true, false]),
         ];
