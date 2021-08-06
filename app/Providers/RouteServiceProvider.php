@@ -26,21 +26,30 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     protected function mapApiRoutes() {
-        Route::get('', function () {
-            return 'Backend with laravel , 2021';
-        });
-        $version= 'v1';
-        Route::prefix('api/'. $version.'/public')
-        ->middleware('api')
-        ->group(base_path('routes/api/public.php'));
+        // Route::get('', function () {
+        //     return 'Backend with laravel , 2021';
+        // });
+        // $version= 'v1';
+        // Route::prefix('api/'. $version.'/public')
+        // ->middleware('api')
+        // ->group(base_path('routes/api/public.php'));
 
-        Route::prefix('api/'. $version.'/private')
-        ->middleware('api')
-        ->group(base_path('routes/api/private.php'));
+        // Route::prefix('api/'. $version.'/private')
+        // ->middleware('api')
+        // ->group(base_path('routes/api/private.php'));
 
-        Route::prefix('api/'. $version.'/authentication')
-        ->middleware('api')
-        ->group(base_path('routes/api/authentication.php'));
+        // Route::prefix('api/'. $version.'/authentication')
+        // ->middleware('api')
+        // ->group(base_path('routes/api/authentication.php'));
+
+        $version = 'v1';
+        Route::prefix("api/${version}")
+            ->middleware('api')
+            ->group(base_path("routes/api/${version}/public.php"));
+
+        Route::prefix("api/${version}")
+            ->middleware('api')
+            ->group(base_path("routes/api/${version}/private.php"));
     }
 
     /**Route

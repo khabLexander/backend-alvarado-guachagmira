@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAppWineriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::connection(env('DB_CONNECTION_APP'))->create('wineries', function (Blueprint $table) {
@@ -20,15 +16,10 @@ class CreateAppWineriesTable extends Migration
             $table->string('color');
             $table->string('description');
             $table->boolean('status')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('wineries');

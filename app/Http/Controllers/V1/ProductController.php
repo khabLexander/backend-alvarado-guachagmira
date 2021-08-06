@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V1;
+
+use App\Http\Controllers\Controller;
+
 
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Winery;
 
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
