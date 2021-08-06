@@ -85,12 +85,12 @@ class WineryController extends Controller
         ], 201
         );
     }
-    public function destroys(Winery $winery)
+    public function destroys(Request $request)
     {
-        Winery::destroy($winery)->input();
+        Winery::destroy($request->input('ids'));
         // $wineries->delete();
         return response()->json(
-            ['data' => $winery,
+            ['data' => null,
             'msg' => [
             'summary' => 'consulta correcta',
             'detail' => 'Se elimino correctamente ',
@@ -100,17 +100,13 @@ class WineryController extends Controller
         );
     }
 
-    public function updateState()
+    public function updateState(Winery $winery, Request $request)
     {
-        $wineries = 'Bodega1';
-
-        // $wineries = Winery::find($winery);
-        // $wineries->status= $request->status;
-        // $wineries->save();
+        $winery->status = $request->status;
 
         return response()->json(
         [
-            'data' => $wineries,
+            'data' => $winery,
             'msg' => [
             'summary' => 'consulta correcta',
             'detail' => 'Se actualizo el estado correctamente ',
