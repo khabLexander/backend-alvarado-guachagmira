@@ -10,6 +10,7 @@ class Winery extends Model
 {
   use HasFactory;
   use SoftDeletes;
+  
   protected $table = 'app.wineries';
   protected $fillable = [
     'name',

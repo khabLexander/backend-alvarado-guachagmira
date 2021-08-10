@@ -7,6 +7,7 @@ use App\Http\Resources\V1\Wineries\WineryResource;
 use App\Http\Resources\V1\Wineries\WineryCollection;
 use App\Http\Requests\V1\Wineries\StoreWineryRequest;
 use App\Http\Requests\V1\Wineries\UpdateWineryRequest;
+use App\Http\Requests\V1\Wineries\DestroyWineryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Winery;
@@ -48,7 +49,7 @@ class WineryController extends Controller
         return new WineryResource($winery);
     }
 
-    public function update(Request $request, Winery $winery)
+    public function update(UpdateWineryRequest $request, Winery $winery)
     {
         // $wineries = Winery::find($winery);
 
@@ -85,6 +86,7 @@ class WineryController extends Controller
         ], 201
         );
     }
+
     public function destroys(Request $request)
     {
         Winery::destroy($request->input('ids'));
